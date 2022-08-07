@@ -1,0 +1,50 @@
+<div class="bdy">
+       
+        <div class="inp">
+            <form>
+                <div class="input-group mb-3 input-group-lg" style="width: 100%;">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-bolt" aria-hidden="true"></i></span>
+                  </div>
+                  <input name="Task1" #uname  placeholder="Add Tasks (Ex: Shopping, Outdoor..)" type="text" class="form-control" id="usr">
+                </div>
+                <div>
+                    <button (click)="addtodo(uname)"  type="button" class="btn btn-success">ADD</button>
+                </div>
+
+              </form>
+         
+
+    <div class="list-group" style="width: 100%;">
+        <table class="table table-dark text-center" *ngIf="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Check</th>
+                <th scope="col">Topic</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users; let i = index">
+                <td>{{i+1}}</td>
+                <td><input #chek (click)="check(chek)" class="check" type="checkbox" name="" id=""></td>
+                <td>{{user.name}}</td>
+                <td><i class="fa fa-trash" aria-hidden="true" (click)="RemoveItem(i,chek)" style="margin-right: 5%;font-size: large;color: #e95f71;"></i></td>
+              </tr>
+            </tbody>
+          </table>
+        
+    </div>
+    
+</div>
+
+        
+    </div>
+
+    
+    <script>
+        $(document).ready(function(){
+        $('[data-toggle="popover"]').popover();   
+      });
+    </script>    

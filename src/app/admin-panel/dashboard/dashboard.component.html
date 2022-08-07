@@ -1,0 +1,140 @@
+  <html>
+    
+  <body>
+    <header class="header">   
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+          <div class="navbar-header">
+            <!-- Navbar Header--><a routerLink="/" class="navbar-brand">
+              <div class="brand-text brand-big visible text-uppercase"><img src="../../../assets/img/Alpha Banner.png" alt=""></div>
+              <div class="brand-text brand-sm"><img src="../../../assets/Alpha Small Transparent.png" alt="" height="50" width="50"></div></a>
+            <!-- Sidebar Toggle Btn-->
+            <button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>
+          </div>
+          <div class="right-menu list-inline no-margin-bottom">    
+            
+            
+            
+            <!-- Languages dropdown    -->
+            <div class="list-inline-item"><a id="languages" rel="nofollow" data-target="#" href="#"   class="nav-link language"><img src="../../../assets/admin/img/flags/16/IN.png" alt="English"></a>
+            </div>
+            <!-- Log out               -->
+            <div class="list-inline-item logout" style="cursor: pointer;" (click)="userService.logOut()"><span class="d-none d-sm-inline">Logout </span><i class="icon-logout"></i></div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="d-flex align-items-stretch">
+      <!-- Sidebar Navigation-->
+      <nav id="sidebar">
+        <!-- Sidebar Header-->
+        <div class="sidebar-header d-flex align-items-center">
+          <div class="avatar"><img src="{{avatar}}" alt="..." class="img-fluid rounded-circle"></div>
+          <div class="title">
+            <h1 class="h5">{{username | titlecase}}</h1>
+            <p>Alpha Admin</p>
+          </div>
+        </div>
+        <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
+        <ul class="list-unstyled">
+          <li class="active"><a routerLink="/admin"> <i class="icon-home"></i>Home </a></li>
+          <li><a routerLink="/users"> <i class="icon-user"></i>Users </a></li>
+          <li><a routerLink="/postStat"> <i class="icon-new-file"></i>Posts </a></li>
+          
+          
+        </ul>
+      </nav>
+      <!-- Sidebar Navigation end-->
+      <div class="page-content">
+        <div class="page-header">
+          <div class="container-fluid">
+            <h2 class="h5 no-margin-bottom">Dashboard</h2>
+          </div>
+        </div>
+        <section class="no-padding-top no-padding-bottom">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-3 col-sm-6">
+                <div class="statistic-block block users">
+                  <div class="progress-details d-flex align-items-end justify-content-center">
+                    <div class="title">
+                      <div class="icon"><i class="icon-user-1" style="font-size: 2.5rem; color: white;"></i></div><strong class="text-white font-weight-bold">Total Users</strong>
+                    </div>
+                  </div>
+                  <div class="number dashtext-1 text-white">{{userList}}</div>
+
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div class="statistic-block block posts">
+                  <div class="progress-details d-flex align-items-end justify-content-center">
+                    <div class="title">
+                      <div class="icon"><i class="icon-contract" style="font-size: 40px;color: white;"></i></div><strong class="text-white">Total Posts</strong>
+                    </div>
+                  </div>
+                  <div class="number dashtext-2 text-white">{{postList}}</div>
+
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div class="statistic-block block time-block">
+                  <div class="progress-details d-flex align-items-end justify-content-center">
+                    <div class="title">
+                      <div class="icon"><i class="fa fa-clock-o" style="font-size: 40px; color: white;"></i></div><strong class="text-white">Time</strong>
+                    </div>
+                  </div>
+                  <div class="number dashtext-3 text-white font-weight-bold text-center" style="font-size: 30px;">{{today | date:'h:mm:ss a'}}</div>
+
+                  
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div id="divWeatherMain"> 
+                  <div *ngIf="WeatherData.isDay" class="weatherWidgetRow">
+                      <i class="fas fa-3x fa-sun sun"></i>  
+                  </div>   
+                  <div *ngIf="!WeatherData.isDay" class="weatherWidgetRow">
+                      <i class="fas fa-3x fa-moon moon"></i>  
+                  </div>   
+                  <div class="weatherWidgetRow cloudDiv">
+                      <i class="fas fa-cloud fa-3x cloud"></i>
+                  </div>
+                  <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">{{WeatherData.temp_celcius}}°</div>
+                  <div class="weatherWidgetRow" style="font-size: 12px;">{{WeatherData.temp_min}}° / {{WeatherData.temp_max}}°</div>
+                  <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like: {{WeatherData.temp_feels_like}}°</div>
+                  <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">{{WeatherData.name}}</div>
+                  <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: {{WeatherData.main.humidity}}%</div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      
+        <section class="no-padding-bottom">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-8">
+                <app-todo class="pr-5"></app-todo>
+              </div>
+              <div class="col-lg-4" >
+                <div class="statistic-block block total-views" style="height: 200px;">
+                  <img src="https://www.bootstrapdash.com/demo/purple/jquery/template/assets/images/dashboard/circle.svg" alt="" class="card-img-absolute" height="200">
+                  <div class="progress-details d-flex align-items-end justify-content-between">
+                    <div class="title">
+                      <div class="icon"><i class="icon-writing-whiteboard" style="font-size: 40px; color: white;"></i></div><strong class="text-white font-weight-bold" style="font-size: 25px;">Total Views</strong>
+                    </div>
+                    <div class="number dashtext-4 text-white font-weight-bold">100</div>
+                  </div>
+                  <div class="progress progress-template">
+                    <div role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    
+      </div>
+    </div>
+  </body>
+  </html>

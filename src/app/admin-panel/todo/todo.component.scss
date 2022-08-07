@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2&family=Raleway:wght@100&display=swap');
+
+form{
+    display: flex;
+    flex-direction: row;
+
+}
+
+input{
+    font-family: 'Baloo Da 2', cursive;
+
+}
+.input-group-text{
+    background-color: #2d3035 !important;
+}
+.form-control{
+    background-color: #2d3035 !important;
+}

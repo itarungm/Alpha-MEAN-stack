@@ -1,0 +1,172 @@
+<!-- Humberger Menu Begin -->
+<div class="humberger-menu-overlay"></div>
+<div class="humberger-menu-wrapper">
+    <div class="hw-logo">
+        <a routerLink="/"><img src="../../../assets/img/Alpha Banner.png" alt=""></a>
+    </div>
+    <div class="hw-menu mobile-menu">
+        <ul>
+            <li><a routerLink="/">Home</a></li>
+            <li><a routerLinl="/posts">Blogs</a>
+            </li>
+           
+        </ul>
+    </div>
+    <div id="mobile-menu-wrap"></div>
+    <div class="hw-copyright">
+        Copyright © 2020 | All Rights Reserved. made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://iTarunGM.Blogspot.com" target="_blank">iTarunGM</a>
+    </div>
+    <div class="hw-social">
+        <a href="https://www.facebook.com/iTarunGM"><i class="fa fa-facebook"></i></a>
+        <a href="https://twitter.com/itarungm/"><i class="fa fa-twitter"></i></a>
+        <a href="https://www.youtube.com/c/Bhramman?sub_confirmation=1"><i class="fa fa-youtube-play"></i></a>
+        <a href="https://www.instagram.com/itarungm/"><i class="fa fa-instagram"></i></a>
+    </div>
+ 
+</div>
+<!-- Humberger Menu End -->
+
+<!-- Header Section Begin -->
+<header class="header-section">
+    <div class="ht-options">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-8">
+                    <div class="ht-widget">
+                        <ul>
+                            <li><i class="fa fa-sun-o" *ngIf="WeatherData.isDay" id="sun"></i><i class="fa fa-moon-o" *ngIf="!WeatherData.isDay" id="moon"></i> <span>{{WeatherData.temp_celcius}}°<sup>c&nbsp;</sup></span>&nbsp;Malda</li>
+                            <li><i class="fa fa-clock-o"></i> {{myDate | date: 'mediumDate' }}</li>
+                            <li class="signup-switch signup-open" *ngIf="!userService.loggedIn()"><i class="fa fa-sign-out"></i> <a routerLink="/login" class="login-text">Login</a>
+                            </li>
+                            <li class="nav-item avatar dropdown" *ngIf="userService.loggedIn()">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
+                                  aria-haspopup="true" aria-expanded="false">
+                                  <img src="{{avatar}}" class="rounded-circle z-depth-0"
+                                    alt="avatar image" height="35px">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
+                                  aria-labelledby="navbarDropdownMenuLink-55">
+                                  <a class="dropdown-item">{{username}}</a>
+                                  <a class="dropdown-item" routerLink="/add-posts">Add Posts</a>
+                                  <a class="dropdown-item" routerLink="/my-posts">My Posts</a>
+                                  <a class="dropdown-item" href="#" (click)="userService.logOut()">Log Out</a>
+                                </div>
+                              </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-4">
+                    <div class="ht-social">
+                        <a href="https://www.facebook.com/iTarunGM" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="https://twitter.com/itarungm/" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/c/Bhramman?sub_confirmation=1" target="_blank"><i class="fa fa-youtube-play"></i></a>
+                        <a href="https://www.instagram.com/itarungm/" target="_blank"><i class="fa fa-instagram"></i></a>
+                        <a href="mailto:tarun7mandal@gmail.com" target="_blank"><i class="fa fa-envelope-o"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="logo">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                   <a routerLink="/"><img src="../../../assets/img/Alpha Big.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nav-options hamberger-change">
+        <div class="container">
+            <div class="humberger-menu humberger-open">
+                <i class="fa fa-bars"></i>
+            </div>
+            <div class="nav-search search-switch">
+                <i class="fa fa-search"></i>
+            </div>
+            <div class="nav-menu">
+                <ul>
+                    <li class="active"><a routerLink="/"><span>Home</span></a></li>
+                    <li class="mega-menu"><a href="/posts"><span>Blogs <i class="fa fa-angle-down"></i></span></a>
+                        <div class="megamenu-wrapper">
+                            <div class="mw-post">
+                                <div *ngIf="postings$ | async as posts">
+                                <div class="mw-post-item">
+                                    <div class="mw-pic">
+                                        <img src="{{'http://localhost:4000/'+posts[posts.length-1].avatar}}" alt="">
+                                    </div>
+                                    <div class="mw-text">
+                                        <h6><a href="#">{{posts[posts.length-1].title | slice:0:28}}</a></h6>
+                                        <ul>
+                                            <li><i class="fa fa-clock-o"></i>{{posts[posts.length-1].created_at | date:'mediumDate'}}</li>
+                                            <li><i class="fa fa-comment-o"></i> 12</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="mw-post-item">
+                                    <div class="mw-pic">
+                                        <img src="{{posts[posts.length-2].avatar}}" alt="">
+                                    </div>
+                                    <div class="mw-text">
+                                        <h6><a href="#">{{posts[posts.length-2].title | slice:0:28}}</a></h6>
+                                        <ul>
+                                            <li><i class="fa fa-clock-o"></i>{{posts[posts.length-2].created_at | date:'mediumDate'}}</li>
+                                            <li><i class="fa fa-comment-o"></i> 12</li>
+                                        </ul>
+                                    </div>
+                                </div><div class="mw-post-item">
+                                    <div class="mw-pic">
+                                        <img src="{{posts[posts.length-3].avatar}}" alt="">
+                                    </div>
+                                    <div class="mw-text">
+                                        <h6><a href="#">{{posts[posts.length-3].title | slice:0:28}}</a></h6>
+                                        <ul>
+                                            <li><i class="fa fa-clock-o"></i>{{posts[posts.length-3].created_at | date:'mediumDate'}}</li>
+                                            <li><i class="fa fa-comment-o"></i> 12</li>
+                                        </ul>
+                                    </div>
+                                </div><div class="mw-post-item">
+                                    <div class="mw-pic">
+                                        <img src="{{posts[posts.length-4].avatar}}" alt="">
+                                    </div>
+                                    <div class="mw-text">
+                                        <h6><a href="#">{{posts[posts.length-4].title | slice:0:28}}</a></h6>
+                                        <ul>
+                                            <li><i class="fa fa-clock-o"></i>{{posts[posts.length-4].created_at | date:'mediumDate'}}</li>
+                                            <li><i class="fa fa-comment-o"></i> 12</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="mw-post-item">
+                                    <div class="mw-pic">
+                                        <img src="{{posts[posts.length-5].avatar}}" alt="">
+                                    </div>
+                                    <div class="mw-text">
+                                        <h6><a href="#">{{posts[posts.length-5].title | slice:0:28}}</a></h6>
+                                        <ul>
+                                            <li><i class="fa fa-clock-o"></i>{{posts[posts.length-5].created_at | date:'mediumDate'}}</li>
+                                            <li><i class="fa fa-comment-o"></i> 12</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Header End -->
+
+<!-- Search model Begin -->
+<div class="search-model">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-switch">+</div>
+        <form class="search-model-form">
+            <input type="text" id="search-input" placeholder="Search here.....">
+        </form>
+    </div>
+</div>
+<!-- Search model end -->

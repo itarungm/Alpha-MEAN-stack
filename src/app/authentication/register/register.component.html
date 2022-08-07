@@ -1,0 +1,77 @@
+<body>
+<div class="signup__container">
+
+    <div class="container__child signup__thumbnail">
+      <div class="thumbnail__logo">
+      <img src="../../../assets/logo.jpg" alt="" width="25px">
+        <h1 class="logo__text">Alpha</h1>
+      </div>
+      <div class="thumbnail__content text-center">
+        <h1 class="heading--primary">Welcome to Alpha.</h1>
+        <h2 class="heading--secondary">Its Showtime</h2>
+      </div>
+      <div class="thumbnail__links">
+        <ul class="list-inline m-b-0 text-center">
+          <li><a href="http://itarungm.blogspot.com/" target="_blank"><i class="fa fa-globe"></i></a></li>
+          <li><a href="https://www.youtube.com/c/Bhramman?sub_confirmation=1" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
+          <li><a href="https://github.com/itarungm" target="_blank"><i class="fa fa-github"></i></a></li>
+          <li><a href="https://twitter.com/itarungm" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        </ul>
+      </div>
+      <div class="signup__overlay"></div>
+    </div>
+    <div class="container__child signup__form">
+      <form [formGroup]="registerForm" (ngSubmit)="submitForm(pass,pass1)">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input class="form-control" type="text" name="username" id="username" placeholder="alpha" required formControlName="username"/>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="inputGroupFile01"
+                aria-describedby="inputGroupFileAddon01" (change)="uploadFile($event)">
+              <label class="custom-file-label" for="inputGroupFile01">Choose Profile Picture</label>
+            </div>
+
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input class="form-control" type="text" name="email" id="email" placeholder="email@alpha.com" required formControlName="email"/>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input class="form-control" type="password" name="password" id="password" placeholder="********" required #pass/>
+        </div>
+        <div class="form-group">
+          <label for="passwordRepeat">Repeat Password</label>
+          <input class="form-control" type="password" name="passwordRepeat" id="passwordRepeat" placeholder="********" required formControlName="password" #pass1/>
+          <small class="text-danger" *ngIf="passCheck">Password is not Matching</small>
+
+        </div>
+        <div class="m-t-lg">
+          <ul class="list-inline">
+            <li>
+              <input class="btn btn--form" type="submit" value="Register" />
+            </li>
+            <li>
+              <p class="signup__link" routerLink="/login">I am already a member</p>
+            </li>
+          </ul>
+        </div>
+      </form>  
+    </div>
+    
+  </div>
+  <div class="alert alert-success w-50 m-auto text-center" *ngIf="success">
+    <strong>Registered!!</strong> You will be Redirected to Login Page ... {{success}}
+  </div>
+
+  <audio autoplay loop>
+    <source src='../../../assets/sounds/register.mp3' type="audio/mp3">
+</audio>
+</body>

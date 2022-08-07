@@ -1,0 +1,113 @@
+<div class="sidebar-option">
+    <div class="social-media" *ngIf="!isPostDetail() || isPosts() || isHomeRoute()">
+        <div class="section-title">
+            <h5>Social media</h5>
+        </div>
+        <ul>
+            <a href="https://www.facebook.com/iTarunGM" target="_blank"><li>
+                <div class="sm-icon"><i class="fa fa-facebook"></i></div>
+                <span>Facebook</span>
+                <div class="follow">410 Follow</div>
+            </li></a>
+            <a href="https://twitter.com/itarungm/" target="_blank"><li>
+                <div class="sm-icon"><i class="fa fa-twitter"></i></div>
+                <span>Twitter</span>
+                <div class="follow">3k Follow</div>
+            </li></a>
+            <a href="https://www.youtube.com/c/Bhramman?sub_confirmation=1" target="_blank"><li>
+                <div class="sm-icon"><i class="fa fa-youtube-play"></i></div>
+                <span>Youtube</span>
+                <div class="follow">23k Subs</div>
+            </li></a>
+            <a href="https://www.instagram.com/itarungm/" target="_blank"><li>
+                <div class="sm-icon"><i class="fa fa-instagram"></i></div>
+                <span>Instagram</span>
+                <div class="follow">26k Follow</div>
+            </li></a>
+        </ul>
+    </div>
+
+
+    <div class="hardware-guides" *ngIf="!isPostDetail() || isPosts() || isHomeRoute()">
+        <div *ngIf="postings$ | async as posts">
+        <div class="section-title">
+            <h5>Recent Posts</h5>
+        </div>
+        <div class="trending-item">
+            <div class="ti-pic">
+                <img src="{{posts[posts.length-1].avatar}}" alt="" width="80px" height="80px">
+            </div>
+            <div class="ti-text">
+                <h6><a href="#">{{posts[posts.length-1].title | slice:0:28}}</a>
+                </h6>
+                <ul>
+                    <li><i class="fa fa-clock-o"></i> {{posts[posts.length-1].created_at | date:'mediumDate'}}</li>
+                    <li><i class="fa fa-comment-o"></i> 12</li>
+                </ul>
+            </div>
+        </div>
+        <div class="trending-item">
+            <div class="ti-pic">
+                <img src="{{posts[posts.length-2].avatar}}" alt="" width="80px" height="80px">
+            </div>
+            <div class="ti-text">
+                <h6><a href="#">{{posts[posts.length-2].title | slice:0:28}}</a>
+                </h6>
+                <ul>
+                    <li><i class="fa fa-clock-o"></i> {{posts[posts.length-2].created_at | date:'mediumDate'}}</li>
+                    <li><i class="fa fa-comment-o"></i> 12</li>
+                </ul>
+            </div>
+        </div><div class="trending-item">
+            <div class="ti-pic">
+                <img src="{{posts[posts.length-3].avatar}}" alt="" width="80px" height="80px">
+            </div>
+            <div class="ti-text">
+                <h6><a href="#">{{posts[posts.length-3].title | slice:0:28}}</a>
+                </h6>
+                <ul>
+                    <li><i class="fa fa-clock-o"></i> {{posts[posts.length-3].created_at | date:'mediumDate'}}</li>
+                    <li><i class="fa fa-comment-o"></i> 12</li>
+                </ul>
+            </div>
+        </div><div class="trending-item">
+            <div class="ti-pic">
+                <img src="{{posts[posts.length-4].avatar}}" alt="" width="80px" height="80px">
+            </div>
+            <div class="ti-text">
+                <h6><a href="#">{{posts[posts.length-4].title | slice:0:28}}</a>
+                </h6>
+                <ul>
+                    <li><i class="fa fa-clock-o"></i> {{posts[posts.length-4].created_at | date:'mediumDate'}}</li>
+                    <li><i class="fa fa-comment-o"></i> 12</li>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="insta-media" *ngIf="((!isPostDetail() || isPosts()) && !isHomeRoute())">
+        <div class="section-title">
+            <h5>Here You Are</h5>
+        </div>
+        <div class="card" style="width: 290px; margin: auto;">
+            <div class="card-header text-center">
+                <img src="{{avatar}}" alt="" width="220" height="250">
+            </div>
+            <div class="card-body text-center text-danger">
+               <b>{{username}}</b> 
+            </div>
+        </div>
+    </div>
+    
+    <div class="subscribe-option" *ngIf="(!isPostDetail() || isPosts())">
+        <div class="section-title">
+            <h5>Subscribe</h5>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor.</p>
+        <form action="#">
+            <input type="text" placeholder="Name">
+            <input type="text" placeholder="Email">
+            <button type="submit"><span>Subscribe</span></button>
+        </form>
+    </div>
+</div>

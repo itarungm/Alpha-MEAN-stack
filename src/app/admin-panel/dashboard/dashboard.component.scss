@@ -1,0 +1,77 @@
+@import '../../../assets/admin/css/style.default.css';
+@import '../../../assets/admin/vendor/font-awesome/css/font-awesome.min.css';
+@import '../../../assets/admin/vendor/bootstrap/css/bootstrap.min.css';
+#divWeatherMain{
+    display: block;
+    border-radius: 10px;
+    
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(8,7,42,1) 75%, rgb(8, 10, 63) 100%);
+    color: white;;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 10px;
+}
+
+.weatherWidgetRow{
+    display:block;
+    margin:0 auto;
+    width: fit-content;
+}
+
+.sun{
+    margin-top: 10px;
+    color: yellow;
+    filter: drop-shadow( 1px 1px 10px yellow);
+}
+
+.moon{
+    margin-top: 10px;
+    color: white;
+    filter: drop-shadow( 1px 1px 10px white);
+}
+
+.cloudDiv{
+    margin-top: -40px;
+}
+
+.cloud{
+    color: rgb(104, 175, 197);
+    filter: drop-shadow( 1px 1px 5px rgb(104, 175, 197));
+    animation-name: cloudMovement;
+    animation-iteration-count: infinite;
+    animation-duration: 10s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+
+@keyframes cloudMovement{
+    from{margin-left: -55px;}
+    to{margin-left: 65px;}
+}
+
+.users{
+    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%) !important;
+    color: white;
+}
+.posts{
+    background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%) !important;
+}
+// .time-block{
+//     width: 225px;
+//     height: 178px;
+// }
+.time-block{
+
+background: linear-gradient(0deg,#ffec61,#f321d7);
+    height: 178px ;
+}
+.card-img-absolute {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    // height: 100%;
+}
+.total-views{
+    background: linear-gradient(to right, #90caf9, #047edf 99%) !important;
+}
+

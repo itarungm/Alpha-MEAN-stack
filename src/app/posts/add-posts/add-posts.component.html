@@ -1,0 +1,56 @@
+<html>
+
+<body>
+  <div class="row">
+    <div class="col-sm-9">
+      <form [formGroup]="form" (ngSubmit)="submitForm()">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Enter title here" formControlName="title">
+        </div>
+
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="inputGroupFile01"
+                aria-describedby="inputGroupFileAddon01" (change)="uploadFile($event)">
+              <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+            </div>
+
+          </div>
+        </div>
+        <div class="form-group">
+          <select  class="browser-default custom-select" formControlName="category" (change)="changeCategory($event)">
+            <option value="" disable>Choose Post Category</option>
+            <option *ngFor="let category of categories;let i = index" >{{category}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Author Name" formControlName="author">
+        </div>
+        <quill-editor [styles]="{'height': '25rem',
+          'min-height': '5rem'}" [modules]="modules" formControlName="desc" (onContentChanged)="textChanged($event)">
+        </quill-editor>
+      </form>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-header text-black">Publish</div>
+        <div class="card-body form-group"><button class="btn btn-primary" (click)="submitForm()">Save</button></div>
+      </div>
+
+      <div class="card" *ngIf="charCount>0">
+        <div class="card-header text-black">Character Counter</div>
+        <div class="card-body form-group"><span class="text-success">typing... </span><span class="text-black">{{charCount}}</span></div>
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+</body>
+</html>

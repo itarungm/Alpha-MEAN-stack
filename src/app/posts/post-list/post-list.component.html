@@ -1,0 +1,58 @@
+ <!-- Breadcrumb Section Begin Posts-->
+<section class="breadcrumb-section set-bg spad" data-setbg="../../../assets/img/breadcrumb-bg.jpg">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12 text-center">
+              <div class="breadcrumb-text">
+                  <h3><span>All &nbsp;Posts</span></h3>
+                  <div class="bt-option">
+                      <a href="#">Home</a>
+                      <span>POSTS</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+<!-- Categories Grid Section Begin -->
+<section class="categories-grid-section spad">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-8 p-0">
+              <div class="row" *ngIf="postings$ | async as posts">
+                  <div class="col-lg-6" *ngFor="let posts of posts">
+                      <div class="cg-item">
+                          <div class="cg-pic set-bg" [ngStyle]="{'background-image': 'url(http://localhost:4000/' + posts.avatar + ')'}">
+                              <div class="label"><span>{{posts.category}}</span></div>
+                          </div>
+                          <div class="cg-text">
+                              <h5><a routerLink="{{posts._id}}">{{posts.title}}</a></h5>
+                              <ul>
+                                  <li>by <span>{{posts.author}}</span></li>
+                                  <li><i class="fa fa-clock-o"></i> {{posts.created_at | date:'medium'}}</li>
+                                  <li><i class="fa fa-comment-o"></i> 20</li>
+                              </ul>
+                              <!-- <p>{{posts.desc | slice:0:100}}...</p> -->
+                              <p [innerHTML]="posts.desc | slice:0:200"></p>
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="pagination-item">
+                  <a href="#"><span>1</span></a>
+                  <a href="#"><span>2</span></a>
+                  <a href="#"><span>3</span></a>
+                  <a href="#"><span>Next</span></a>
+              </div>
+          </div>
+          <div class="col-lg-4 col-md-7 p-0">
+              <app-right-sidebar></app-right-sidebar>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- Categories Grid Section End -->
+<app-footer></app-footer>

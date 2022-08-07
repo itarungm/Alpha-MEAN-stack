@@ -1,0 +1,306 @@
+<app-header></app-header>
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+    <!-- Hero Section Begin -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row" >
+                <div class="col-lg-6 col-md-6" *ngIf="postings$ | async as posts">
+                    <div class="hs-text" >
+                        <div class="label"><span>{{posts[posts.length-1].category}}</span></div>
+                        <h3 routerLink="/posts/{{posts[posts.length-1]._id}}" style="cursor:pointer">{{posts[posts.length-1].title}}</h3>
+                        <div class="ht-meta">
+                            <ul>
+                                <li>by {{posts[posts.length-1].author}}</li>
+                                <li>{{posts[posts.length-1].created_at | date:'mediumDate'}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-5 col-md-6 offset-lg-1 offset-xl-2" >
+                    <div class="trending-post">
+                        <div class="section-title">
+                            <h5>Trending posts</h5>
+                        </div>
+                        <div class="trending-slider owl-carousel">
+                            <div class="single-trending-item" *ngIf="postings$ | async as posts">
+                                <div class="trending-item" *ngFor="let posts of posts; let i=index">
+                                    <div *ngIf="i<4">
+                                    <div class="ti-pic" >
+                                        <img src="{{'http://localhost:4000/'+posts.avatar}}" alt="" width="120" height="80">
+                                    </div>
+                                    <div class="ti-text" >
+                                        <h6><a routerLink="/posts/{{posts._id}}">{{posts.title | slice:0:40}}..</a>
+                                        </h6>
+                                        <ul>
+                                            <li><i class="fa fa-clock-o"></i> {{posts.created_at | date:'mediumDate'}}</li>
+                                            <li><i class="fa fa-comment-o"></i> 12</li>
+                                        </ul>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-slider owl-carousel">
+            <div class="hs-item set-bg" data-setbg="../../../assets/img/hero/hero-1.jpg"></div>
+            <div class="hs-item set-bg" data-setbg="../../../assets/img/hero/hero-2.jpg"></div>
+            <div class="hs-item set-bg" data-setbg="../../../assets/img/hero/hero-3.jpg"></div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- masonry-blog  -->
+    <section class="section first-section">
+        <div class="container-fluid">
+            <div class="masonry-blog clearfix" *ngIf="postings$ | async as posts">
+                <div class="first-slot">
+                    <div class="masonry-box post-media">
+                         <img src="{{posts[posts.length-2].avatar}}" alt="" class="img-fluid" width="788" height="443" routerLink="/posts/{{posts[posts.length-2]._id}}">
+                         <div class="shadoweffect">
+                            <div class="shadow-desc">
+                                <div class="blog-meta">
+                                    <span class="bg-orange"><a href="tech-category-01.html" title="">{{posts[posts.length-2].category}}</a></span>
+                                    <h4><a routerLink="/posts/{{posts[posts.length-2]._id}}" title="">{{posts[posts.length-2].title | slice:0:58}}</a></h4>
+                                    <small><a href="tech-single.html" title="">{{posts[posts.length-2].created_at | date:'mediumDate'}}</a></small>
+                                    <small><a href="tech-author.html" title="">by {{posts[posts.length-2].author}}</a></small>
+                                </div><!-- end meta -->
+                            </div><!-- end shadow-desc -->
+                        </div><!-- end shadow -->
+                    </div><!-- end post-media -->
+                </div><!-- end first-side -->
+
+                <div class="second-slot">
+                    <div class="masonry-box post-media">
+                         <img src="{{posts[posts.length-3].avatar}}" alt="" class="img-fluid" height="">
+                         <div class="shadoweffect">
+                            <div class="shadow-desc">
+                                <div class="blog-meta">
+                                    <span class="bg-orange"><a href="tech-category-01.html" title="">{{posts[posts.length-3].category}}</a></span>
+                                    <h4><a routerLink="/posts/{{posts[posts.length-3]._id}}" title="">{{posts[posts.length-3].title | slice:0:58}}</a></h4>
+                                    <small><a href="tech-single.html" title="">{{posts[posts.length-3].created_at | date:'mediumDate'}}</a></small>
+                                    <small><a href="tech-author.html" title="">by {{posts[posts.length-3].author}}</a></small>
+                                </div><!-- end meta -->
+                            </div><!-- end shadow-desc -->
+                         </div><!-- end shadow -->
+                    </div><!-- end post-media -->
+                    <div class="masonry-box post-media">
+                      <img src="{{posts[posts.length-4].avatar}}" alt="" class="img-fluid" width="394" height="449">
+                      <div class="shadoweffect">
+                         <div class="shadow-desc">
+                           <div class="blog-meta">
+                             <span class="bg-orange"><a href="tech-category-01.html" title="">{{posts[posts.length-4].category}}</a></span>
+                             <h4><a routerLink="/posts/{{posts[posts.length-4]._id}}" title="">{{posts[posts.length-4].title | slice:0:58}}</a></h4>
+                             <small><a href="tech-single.html" title="">{{posts[posts.length-4].created_at | date:'mediumDate'}}</a></small>
+                             <small><a href="tech-author.html" title="">by {{posts[posts.length-4].author}}</a></small>
+                         </div><!-- end meta -->
+                         </div><!-- end shadow-desc -->
+                      </div><!-- end shadow -->
+                 </div><!-- end post-media -->
+                </div><!-- end second-side -->
+
+                <div class="last-slot">
+                    <div class="masonry-box post-media">
+                         <img src="{{posts[posts.length-4].avatar}}" alt="" class="img-fluid" width="394" height="449">
+                         <div class="shadoweffect">
+                            <div class="shadow-desc">
+                              <div class="blog-meta">
+                                <span class="bg-orange"><a href="tech-category-01.html" title="">{{posts[posts.length-8].category}}</a></span>
+                                <h4><a routerLink="/posts/{{posts[posts.length-8]._id}}" title="">{{posts[posts.length-8].title | slice:0:58}}</a></h4>
+                                <small><a href="tech-single.html" title="">{{posts[posts.length-8].created_at | date:'mediumDate'}}</a></small>
+                                <small><a href="tech-author.html" title="">by {{posts[posts.length-8].author}}</a></small>
+                            </div><!-- end meta -->
+                            </div><!-- end shadow-desc -->
+                         </div><!-- end shadow -->
+                    </div><!-- end post-media -->
+                    <div class="masonry-box post-media">
+                      <img src="{{posts[posts.length-5].avatar}}" alt="" class="img-fluid" width="394" height="449">
+                      <div class="shadoweffect">
+                         <div class="shadow-desc">
+                           <div class="blog-meta">
+                             <span class="bg-orange"><a href="tech-category-01.html" title="">{{posts[posts.length-5].category}}</a></span>
+                             <h4><a routerLink="/posts/{{posts[posts.length-5]._id}}" title="">{{posts[posts.length-5].title | slice:0:58}}</a></h4>
+                             <small><a href="tech-single.html" title="">{{posts[posts.length-5].created_at | date:'mediumDate'}}</a></small>
+                             <small><a href="tech-author.html" title="">by {{posts[posts.length-5].author}}</a></small>
+                         </div><!-- end meta -->
+                         </div><!-- end shadow-desc -->
+                      </div><!-- end shadow -->
+                 </div><!-- end post-media -->
+                </div><!-- end second-side -->
+            </div><!-- end masonry -->
+        </div>
+    </section>
+    <!-- masonry-blog End  -->
+
+    <!-- Update News Section Begin -->
+    <section class="update-news-section">
+            <div class="row">
+                <div class="col-lg-8">
+
+                    <div class="content_bottom_left" *ngIf="postings$ | async as posts">
+                        <div class="single_category wow fadeInDown">
+                          <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">Technology</a> </h2>
+                          <div class="business_category_left wow fadeInDown">
+                            <ul class="fashion_catgnav">
+                              <li>
+                                <div class="catgimg2_container"> <a href="pages/single.html"><img alt="" src="{{posts[postings[postings.length-1]].avatar}}"></a> </div>
+                                <h2 class="catg_titile"><a routerLink="/posts/{{posts[postings[postings.length-1]]._id}}">{{posts[postings[postings.length-1]].title | slice:0:32}}..</a></h2>
+                                <div class="comments_box"> <span class="meta_date">{{posts[postings[postings.length-1]].created_at | date:'mediumDate'}}</span> <span class="meta_comment"><a href="#">No Comments</a></span> <span class="meta_more"><a  href="#">Read More...</a></span> </div>
+                                <p [innerHTML]="posts[postings[postings.length-1]].desc | slice:0:200"></p>
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="business_category_right wow fadeInDown">
+                            <ul class="small_catg">
+                              <li>
+                                <div class="media wow fadeInDown"> <a class="media-left" href="pages/single.html"><img src="{{posts[posts.length-7].avatar}}" alt=""></a>
+                                  <div class="media-body">
+                                    <h4 class="media-heading"><a routerLink="/posts/{{posts[posts.length-7]._id}}">{{posts[posts.length-7].title | slice:0:32}}.. </a></h4>
+                                    <div class="comments_box"> <span class="meta_date">{{posts[posts.length-7].created_at | date:'mediumDate'}}</span> <span class="meta_comment"><a href="#">No Comments</a></span> </div>
+                                  </div>
+                                </div>
+                              </li>
+                              <li>
+                                <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="{{posts[posts.length-8].avatar}}" alt=""></a>
+                                  <div class="media-body">
+                                    <h4 class="media-heading"><a routerLink="/posts/{{posts[posts.length-8]._id}}">{{posts[posts.length-8].title | slice:0:32}}.. </a></h4>
+                                    <div class="comments_box"> <span class="meta_date">{{posts[posts.length-8].created_at | date:'mediumDate'}}</span> <span class="meta_comment"><a href="#">No Comments</a></span> </div>
+                                  </div>
+                                </div>
+                              </li>
+                              <li>
+                                <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="{{posts[posts.length-9].avatar}}" alt=""></a>
+                                  <div class="media-body">
+                                    <h4 class="media-heading"><a routerLink="/posts/{{posts[posts.length-9]._id}}">{{posts[posts.length-9].title | slice:0:32}}.. </a></h4>
+                                    <div class="comments_box"> <span class="meta_date">{{posts[posts.length-9].created_at | date:'mediumDate'}}</span> <span class="meta_comment"><a href="#">No Comments</a></span> </div>
+                                  </div>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="games_fashion_area">
+                          <div class="games_category">
+                            <div class="single_category">
+                              <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">Gaming</a> </h2>
+                              <ul class="fashion_catgnav wow fadeInDown">
+                                <li>
+                                  <div class="catgimg2_container"> <a href="pages/single.html"><img alt="" src="{{posts[posts.length-10].avatar}}"></a> </div>
+                                  <h2 class="catg_titile"><a routerLink="/posts/{{posts[posts.length-10]._id}}">{{posts[posts.length-10].title | slice:0:32}}..</a></h2><br>
+                                  <div class="comments_box"> <span class="meta_date"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{posts[posts.length-10].created_at | date:'mediumDate'}}</span> <span class="meta_comment"><a href="#">No Comments</a></span> <span class="meta_more"><a  href="#">Read More...</a></span> </div>
+                                  <p [innerHTML]="posts[posts.length-10].desc | slice:0:200"></p>
+                                </li>
+                              </ul>
+                              <ul class="small_catg wow fadeInDown">
+                                <li>
+                                  <div class="media"> <a class="media-left" href="#"><img src="{{posts[posts.length-11].avatar}}" alt=""></a>
+                                    <div class="media-body">
+                                      <h4 class="media-heading"><a routerLink="/posts/{{posts[posts.length-11]._id}}">{{posts[posts.length-11].title | slice:0:32}}.. </a></h4>
+                                      <div class="comments_box"> <span class="meta_date">{{posts[posts.length-11].created_at | date:'mediumDate'}}</span> <span class="meta_comment"><a href="#">No Comments</a></span> </div>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="{{posts[posts.length-12].avatar}}" alt=""></a>
+                                    <div class="media-body">
+                                      <h4 class="media-heading"><a routerLink="/posts/{{posts[posts.length-12]._id}}">{{posts[posts.length-12].title | slice:0:32}}.. </a></h4>
+                                      <div class="comments_box"> <span class="meta_date">{{posts[posts.length-12].created_at | date:'mediumDate'}}</span> <span class="meta_comment"><a href="#">No Comments</a></span> </div>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div class="fashion_category">
+                            <div class="single_category">
+                              <div class="single_category wow fadeInDown">
+                                <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">Entertainment</a> </h2>
+                                <ul class="fashion_catgnav wow fadeInDown">
+                                  <li>
+                                    <div class="catgimg2_container"> <a href="#"><img alt="" src="{{posts[posts.length-13].avatar}}"></a> </div>
+                                    <h2 class="catg_titile"><a routerLink="/posts/{{posts[posts.length-13]._id}}">{{posts[posts.length-13].title | slice:0:32}}..</a></h2>
+                                    <div class="comments_box"> <span class="meta_date">{{posts[posts.length-13].created_at | date:'mediumDate'}}</span> <span class="meta_comment"><a href="#">No Comments</a></span> <span class="meta_more"><a  href="#">Read More...</a></span> </div>
+                                    <p [innerHTML]="posts[posts.length-13].desc | slice:0:200"></p>
+                                  </li>
+                                </ul>
+                                <ul class="small_catg wow fadeInDown">
+                                  <li>
+                                    <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="{{posts[posts.length-14].avatar}}" alt=""></a>
+                                      <div class="media-body">
+                                        <h4 class="media-heading"><a routerLink="/posts/{{posts[posts.length-14]._id}}">{{posts[posts.length-14].title | slice:0:32}}.. </a></h4>
+                                        <div class="comments_box"> <span class="meta_date">{{posts[posts.length-14].created_at | date:'mediumDate'}}</span> <span class="meta_comment"><a href="#">12 Comments</a></span> </div>
+                                      </div>
+                                    </div>
+                                  </li>
+                                  <li>
+                                    <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="{{posts[posts.length-15].avatar}}" alt=""></a>
+                                      <div class="media-body">
+                                        <h4 class="media-heading"><a routerLink="/posts/{{posts[posts.length-15]._id}}">{{posts[posts.length-15].title | slice:0:32}}.. </a></h4>
+                                        <div class="comments_box"> <span class="meta_date">{{posts[posts.length-15].created_at | date:'mediumDate'}}</span> <span class="meta_comment"><a href="#">No Comments</a></span> </div>
+                                      </div>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="technology_catrarea">
+                          <div class="single_category">
+                            <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">World</a> </h2>
+                            <div class="business_category_left">
+                              <ul class="fashion_catgnav wow fadeInDown">
+                                <li>
+                                  <div class="catgimg2_container"> <a href="#"><img alt="" src="{{posts[posts.length-16].avatar}}"></a> </div>
+                                  <h2 class="catg_titile"><a routerLink="/posts/{{posts[posts.length-16]._id}}">{{posts[posts.length-16].title | slice:0:34}}..</a></h2>
+                                  <div class="comments_box"> <span class="meta_date">{{posts[posts.length-16].created_at | date:'mediumDate'}}</span> <span class="meta_comment"><a href="#">No Comments</a></span> <span class="meta_more"><a  href="#">Read More...</a></span> </div>
+                                  <p [innerHTML]="posts[posts.length-16].desc | slice:0:200"></p>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="business_category_right">
+                              <ul class="small_catg wow fadeInDown">
+                                <li>
+                                  <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="{{posts[posts.length-17].avatar}}" alt=""></a>
+                                    <div class="media-body">
+                                      <h4 class="media-heading"><a routerLink="/posts/{{posts[posts.length-17]._id}}">{{posts[posts.length-17].title | slice:0:32}}.. </a></h4>
+                                      <div class="comments_box"> <span class="meta_date">{{posts[posts.length-17].created_at | date:'mediumDate'}}</span> <span class="meta_comment"><a href="#">No Comments</a></span> </div>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="{{posts[posts.length-18].avatar}}" alt=""></a>
+                                    <div class="media-body">
+                                      <h4 class="media-heading"><a routerLink="/posts/{{posts[posts.length-18]._id}}">{{posts[posts.length-18].title | slice:0:32}}.. </a></h4>
+                                      <div class="comments_box"> <span class="meta_date">{{posts[posts.length-18].created_at | date:'mediumDate'}}</span> <span class="meta_comment"><a href="#">No Comments</a></span> </div>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="{{posts[posts.length-19].avatar}}" alt=""></a>
+                                    <div class="media-body">
+                                      <h4 class="media-heading"><a routerLink="/posts/{{posts[posts.length-19]._id}}">{{posts[posts.length-19].title | slice:0:32}}.. </a></h4>
+                                      <div class="comments_box"> <span class="meta_date">{{posts[posts.length-19].created_at | date:'mediumDate'}}</span> <span class="meta_comment"><a href="#">No Comments</a></span> </div>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  
+
+                </div>
+                <div class="col-lg-4">
+                    <app-right-sidebar></app-right-sidebar>
+                    </div>
+            </div>
+    </section>
+    <!-- Update News Section End -->
+<app-footer></app-footer>

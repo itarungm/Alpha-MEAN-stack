@@ -1,0 +1,206 @@
+<!-- <app-headerv2></app-headerv2>
+<div class="info-wrrap">
+    <h4>{{posting.title}}</h4>
+    <h5>Price: {{ posting.created_at }} | Locality: {{ posting.author }}</h5>
+    <p>Details: {{ posting.desc }}</p>
+    <img src="{{posting.avatar}}" alt="" width="500" height="200">
+    <button (click)="showEdit()">Edit</button>
+    <button class="btn-delete" (click)="removeListing()">Delete</button>
+  </div>
+  
+  <div class="form-wrrap" *ngIf="showForm">
+    <h3>Edit Listing</h3>
+    <form [formGroup]="editListingForm" (ngSubmit)="editListing()">
+      <input
+        type="text"
+        placeholder="Enter Title"
+        [(ngModel)]="posting.title"
+        formControlName="title"
+      />
+      <input
+        type="text"
+        placeholder="Enter Price"
+        [(ngModel)]="posting.desc"
+        formControlName="desc"
+      />
+      <input
+        type="text"
+        placeholder="Enter Locality"
+        [(ngModel)]="posting.author"
+        formControlName="author"
+      />
+      
+      <input
+        type="submit"
+        value="Add Listing"
+        [disabled]="!editListingForm.valid"
+      />
+    </form>
+  </div> -->
+
+  <app-header></app-header>
+  <!-- Details Hero Section Begin -->
+<section class="details-hero-section set-bg" [ngStyle]="{'background-image': 'url(' + posting?.avatar + ')'}">
+  <div class="container">
+      <div class="row">
+        
+          <div class="col-lg-6">
+              <div class="details-hero-text hero-left">
+                  <div class="label"><span>Playstation</span></div>
+                  <div class="label"><span>Hardware</span></div>
+                  <h3>{{posting.title}}</h3>
+                  <ul>
+                      <li>by <span>{{posting.author}}</span></li>
+                      <li><i class="fa fa-clock-o"></i> {{posting.created_at | date:'medium'}}</li>
+                      <li><i class="fa fa-comment-o"></i> 20</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- Details Hero Section End -->
+
+<!-- Details Post Section Begin -->
+<section class="details-post-section spad">
+  <div class="container">
+    <div class="editor" *ngIf="email==posting.token || userRole=='admin'">
+      <button class="button waves-effect success" (click)="showEdit();hideBody=!hideBody">Edit</button>
+      <button class="button waves-effect danger" (click)="removeListing()">Delete</button>
+      <div class="form-wrrap" *ngIf="showForm">
+        <h3>Edit Listing</h3>
+        <form [formGroup]="editListingForm" (ngSubmit)="editListing()">
+
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupFileAddon01">Post Title</span>
+            </div>
+            <div class="custom-file">
+              <input
+          class="form-control"
+            type="text"
+            placeholder="Enter Title"
+            [(ngModel)]="posting.title"
+            formControlName="title"
+          />
+            </div>
+          </div>
+          
+  
+          <quill-editor [styles]="{'height': '25rem',
+          'min-height': '5rem'}" [modules]="modules" [(ngModel)]="posting.desc" formControlName="desc" class="form-editor"></quill-editor>
+
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupFileAddon01">Post Author</span>
+            </div>
+            <div class="custom-file">
+              <input
+              style="margin-left:5px"
+              type="text"
+              placeholder="Enter Author Name"
+              [(ngModel)]="posting.author"
+              formControlName="author"
+            />
+            </div>
+          </div>
+
+          <input
+            class="button waves-effect secondary"
+            type="submit"
+            value="Update Post"
+            [disabled]="!editListingForm.valid"
+          />
+          <input
+            (click)="editCancel()"
+            class="button waves-effect danger"
+            type="button"
+            value="Cancel"
+            [disabled]="!editListingForm.valid"
+          />
+        </form>
+      </div>
+    </div>
+      <div class="row">
+          <div class="col-lg-8 p-0">
+              <div class="details-text">
+                  <div class="dt-last-desc" style="color: white;" [innerHTML]="posting.desc" *ngIf="hideBody">
+                  </div>
+                  <div class="dt-tags">
+                      <a href="#"><span>Gaming</span></a>
+                      <a href="#"><span>Platform</span></a>
+                      <a href="#"><span>Playstation</span></a>
+                      <a href="#"><span>Hardware</span></a>
+                  </div>
+                  <div class="dt-share">
+                      <div class="ds-title">Share</div>
+                      <div class="ds-links">
+                          <a href="#" class="wide"><i class="fa fa-heart-o"></i><span>120</span></a>
+                          <a href="#"><i class="fa fa-facebook"></i></a>
+                          <a href="#"><i class="fa fa-twitter"></i></a>
+                          <a href="#"><i class="fa fa-google-plus"></i></a>
+                          <a href="#"><i class="fa fa-instagram"></i></a>
+                          <a href="#"><i class="fa fa-youtube-play"></i></a>
+                      </div>
+                  </div>
+                  <!-- <div class="dt-related-post">
+                      <div class="row">
+                          <div class="col-lg-6">
+                              <a href="#" class="rp-prev">
+                                  <span>Prev</span>
+                                  <div class="rp-pic">
+                                      <img src="../../../assets/img/details/prev.jpg" alt="">
+                                  </div>
+                                  <div class="rp-text">
+                                      <h6>The Real-Estate Developers Are the Enemy</h6>
+                                      <ul>
+                                          <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
+                                          <li><i class="fa fa-comment-o"></i> 20</li>
+                                      </ul>
+                                  </div>
+                              </a>
+                          </div>
+                          <div class="col-lg-6">
+                              <a href="#" class="rp-next">
+                                  <span>Next</span>
+                                  <div class="rp-pic">
+                                      <img src="../../../assets/img/details/next.jpg" alt="">
+                                  </div>
+                                  <div class="rp-text">
+                                      <h6>Montreal real estate: Bargains in cottage countrya</h6>
+                                      <ul>
+                                          <li><i class="fa fa-clock-o"></i> Aug 01, 2019</li>
+                                          <li><i class="fa fa-comment-o"></i> 20</li>
+                                      </ul>
+                                  </div>
+                              </a>
+                          </div>
+                      </div>
+                  </div> -->
+                  <div class="dt-author">
+                      <div class="da-pic">
+                          <img src="../../../assets/img/details/author-pic.jpg" alt="">
+                      </div>
+                      <div class="da-text">
+                          <h5>Almil Hmaper</h5>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                          <div class="da-links">
+                              <a href="#"><i class="fa fa-facebook"></i></a>
+                              <a href="#"><i class="fa fa-twitter"></i></a>
+                              <a href="#"><i class="fa fa-google-plus"></i></a>
+                              <a href="#"><i class="fa fa-instagram"></i></a>
+                              <a href="#"><i class="fa fa-youtube-play"></i></a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-4 col-md-7">
+              <app-right-sidebar></app-right-sidebar>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- Details Post Section End -->
